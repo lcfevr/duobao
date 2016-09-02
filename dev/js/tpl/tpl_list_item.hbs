@@ -1,0 +1,21 @@
+{{#if item}}
+{{#list item}}
+<li class="w-goodsList-item">
+    <div class="w-goods w-goods-l w-goods-ing" data-gi="{{shopid}}">
+        <a href="javascript:;" class="w-goods-link" data-href="?c=detail&amp;id={{shopid}}">
+            {{!-- <i class="ico ico-label ico-label-ten"></i> --}}
+            <div class="w-goods-pic" data-img="{{shopid}}" style="background-image:url({{thumb}})"></div>
+            <div class="w-goods-info">
+                <div class="w-goods-title f-txtabb f-breakword">{{shopTitle}}</div>
+                <div class="w-progressBar"><p class="wrap"><span class="bar" style="width:{{#percent currentNum totalNum}}{{val}}{{/percent}}%;"><i class="color"></i></span></p><ul class="txt"><li class="txt-l"><p>总需{{totalNum}} 人次</p></li><li class="txt-r"><p>剩余<b class="txt-blue">{{#subtract totalNum currentNum}}{{val}}{{/subtract}}</b></p></li></ul></div>
+            </div>
+        </a>
+        {{#gt totalNum currentNum}}
+        <div class="w-goods-shortFunc">
+            <button class="w-button w-button-round w-button-addToCart" data-addcart="{{shopid}}"></button>
+        </div>
+        {{/gt}}
+    </div>
+</li>
+{{/list}}
+{{/if}}

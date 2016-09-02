@@ -1,0 +1,48 @@
+{{#list item}}
+<li class="w-goodsList-item">
+    <div class="w-goods w-goods-l w-goods-ing m-user-goods">
+        <div class="w-goods-pic">
+            <a href="javascript:;" data-href="?c=detail&amp;id={{goodsId}}">
+                <img src="{{goodsImg}}">
+            </a>
+        </div>
+        <div class="w-goods-info">
+            <p class="w-goods-title f-txtabb"><a href="javascript:;" data-href="?c=detail&amp;id={{goodsId}}">{{goodsName}}</a></p>
+            <p class="w-goods-period">期号：{{periods}}</p>
+            {{#if endTime}}
+            <div class="m-user-goods-owner m-user-box">
+                <div class="m-user-box-name">获得者：</div>
+                <div class="m-user-box-cont"><a href="javascript:;"{{#if lucklyManId}} data-href="?c=profile&amp;id={{lucklyManId}}"{{/if}}>{{lucklyMan}}</a>(本期共参与<strong>{{luncklyCount}}</strong>人次)</div>
+            </div>
+            <p class="m-user-goods-code">幸运号码：<span class="txt-impt">{{lucklyCode}}</span></p>
+            <p class="m-user-goods-time">揭晓时间：{{endTime}}</p>
+            {{else}}
+            <div class="w-progressBar">
+                <p class="wrap">
+                    <span class="bar" style="width:{{#npercent need totalNeed}}{{val}}%{{/npercent}}"><i class="color"></i></span>
+                </p>
+                <ul class="txt">
+                    <li class="txt-l">
+                        <p>总需{{totalNeed}}</p>
+                    </li>
+                    <li class="txt-r">
+                        <p>剩余<b class="txt-blue">{{need}}</b></p>
+                    </li>
+                </ul>
+            </div>
+            {{/if}}
+            <div class="m-user-goods-my">
+                本期参与：<span class="txt-impt">{{count}}</span>人次
+            </div>
+        </div>
+        <div class="w-goods-shortFunc">
+        {{#if endTime}}
+        {{else}}
+        {{#neq need 0}}
+        <a href="javascript:;" class="w-button w-button-main w-button-s" data-href="?c=detail&amp;id={{goodsId}}">跟买</a>
+        {{/neq}}
+        {{/if}}
+        </div>
+    </div>
+</li>
+{{/list}}

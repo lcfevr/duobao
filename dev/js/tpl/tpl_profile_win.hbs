@@ -1,0 +1,22 @@
+{{#list item}}
+<li class="w-goodsList-item">
+    <div class="w-goods w-goods-l w-goods-ing m-user-goods m-user-goods-winList">
+        <div class="w-goods-pic">
+            <a href="javascript:;" data-href="?c=detail&amp;id={{goodsid}}">
+                <img src="{{goodsimg}}">
+            </a>
+        </div>
+        <div class="w-goods-info">
+            <p class="w-goods-title f-txtabb"><a href="javascript:;" data-href="?c=detail&amp;id={{goodsid}}">{{goodsname}}</a></p>
+            <p class="w-goods-price">总需：{{totalNeed}} 人次</p>
+            <p class="w-goods-period">期号：{{periodsNo}}</p>
+            <p class="m-user-goods-code">幸运号码：<span class="txt-impt">{{luckyNumber}}</span></p>
+            <div class="m-user-goods-common">本期参与：{{buyNumber}}人次</div>
+            <div class="m-user-box">
+                <p class="m-user-box-name">揭晓时间：</p>
+                <p class="m-user-box-cont">{{endTime}}</p>
+            </div>
+        </div>
+    </div>
+</li>
+{{/list}}

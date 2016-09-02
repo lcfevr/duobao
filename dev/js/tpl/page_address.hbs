@@ -1,0 +1,21 @@
+<div class="m-user m-user-addrList-manage" id="addressListPage">
+    <div class="m-simpleHeader">
+        <a href="javascript:;" class="m-simpleHeader-back" data-fn="back"><i class="ico ico-back"></i></a>
+        <a href="javascript:;" class="m-simpleHeader-ok" id="addAddress" data-hide="#addressListPage" data-show="#addressForm">新增</a>
+        <h1>管理收货地址</h1>
+    </div>
+    <div class="m-user-addrList">
+        {{#if item}}
+        {{#list item}}
+        <div class="item{{#if default}} default selected{{/if}}" data-id="{{id}}" data-hide="#addressListPage" data-show="#addressForm">
+            <div class="name">{{consignee}}</div>
+            <div class="mobile">{{phone}}</div>
+            <div class="detail">{{#if default}}<span class="m-user-link dftTag">[默认]</span> {{/if}}{{province}} {{city}} {{area}} {{address}}</div>
+        </div>
+        {{/list}}
+        {{else}}
+        <div class="w-more">暂无收货地址</div>
+        {{/if}}
+    </div>
+</div>
+<form class="m-user" id="addressForm" style="display:none;"></form>

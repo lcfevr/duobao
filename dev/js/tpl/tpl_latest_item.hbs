@@ -1,0 +1,17 @@
+{{#list item}}
+    <li class="w-record m-winRecord-revealed">
+        <div class="w-record-title"><a href="javascript:;">商品：{{goods_name}} &nbsp; 期号：{{goods_qishu}} ( 揭晓时间：{{goods_end_time}} )</a></div>
+        <div class="w-record-cnt f-clear">
+            <div class="w-record-avatar2">
+                <a href="javascript:;" data-href="?c=detail&amp;id={{goods_id}}"><img width="90" height="90" src="{{#if goods_name}}{{goods_img}}{{else}}images/90.jpeg{{/if}}"></a>
+            </div>
+            <div class="w-record-detail">
+                <p class="f-txtabb">商品名称：<a href="javascript:;" data-href="?c=detail&amp;id={{goods_id}}">{{goods_name}}</a></p>
+                <p class="f-txtabb">获奖者：<a href="javascript:;" data-href="?c=profile&amp;id={{goods_q_uid}}">{{goods_q_uname}}</a></p>
+                <p>用户ID：{{goods_q_uid}} (唯一不变标识)</p>
+                <p>幸运号码：<span class="txt-red">{{goods_code}}</span></p>
+                <p>本期参与：<span class="txt-red">{{goods_in_number}}</span>人次</p>
+            </div>
+        </div>
+    </li>
+{{/list}}

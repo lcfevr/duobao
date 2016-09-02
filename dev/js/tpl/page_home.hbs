@@ -1,0 +1,259 @@
+<div class="g-body">
+    <div class="m-index">
+    {{#if banner.item}}
+        <div class="g-body-hd">
+            <div class=" swiper-container " id="home-slide">
+                <!--<img src="images/banner-spacing.png" class="banner-spacing">-->
+                <ul class="swiper-wrapper" >
+                {{#list banner.item}}
+                    <li class="swiper-slide w-slide-wrap-list-item"{{#if backGroudColor}} style="background-color:{{backGroudColor}}"{{/if}}>
+                        {{#if id}}
+                            <a class="frame" href="javascript:;" data-href="?c=detail&amp;id={{id}}"><img src="{{imgUrl}}"></a>
+                      {{else}}
+                          <a class="frame" href="{{url}}" data-href=""><img src="{{imgUrl}}"></a>
+                       {{/if}}
+                        <a class="frame" href="javascript:;" data-href="?c=detail&amp;id={{id}}"><img src="{{imgUrl}}"></a>
+                    </li>
+                {{/list}}
+                </ul>
+                <div class="swiper-pagination"></div>
+                <!--<div class="w-slide-controller">-->
+                    <!--<div class="w-slide-controller-nav" id="home-slide-nav">-->
+                    <!--{{#list banner.item}}-->
+                    <!--<span class="dot"></span>-->
+                    <!--{{/list}}-->
+                    <!--</div>-->
+                <!--</div>-->
+            </div>
+        </div>
+    {{/if}}
+        <div class="g-wrap g-body-bd">
+            <div class="m-lead">
+                <ul class="m-lead-list">
+                    <li>
+                        <i class="user_Sign">
+                            <img src="../../images/lead-1.gif" />
+                            <span>{{#if is_qiandao}}已签到{{else}}每日签到{{/if}}</span>
+                        </i>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-href="?c=latest">
+                            <img src="../../images/lead-2.gif" />
+                            <span>最新揭晓</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-href="?c=servicecenter">
+                            <img src="../../images/lead-3.gif" />
+                            <span>服务中心</span>
+                        </a>
+                    </li>
+                    <li>
+                        <i id="make_Coins">
+                            <img src="../../images/lead-4.gif" />
+                            <span>分享赚币</span>
+                        </i>
+                    </li>
+                </ul>
+            </div>
+            <div class="lottery">
+                <div class="lottery-top"></div>
+                <div class="lottery-con"></div>
+                <div class="broadcast-icon"></div>
+                <ul id="broadCastSlide">
+                    {{#list winMsg.item}}
+                    <li>恭喜 <a style="color:#fff" data-href="./?c=profile&amp;id={{user_id}}">{{username}}</a> 获得 <a style="color:#fff" data-href="./?c=detail&amp;id={{goods_id}}">{{title}}</a> </li>
+                    {{/list}}
+                </ul>
+            </div>
+            {{#if new.item}}
+                <div class="m-index-mod m-index-newArrivals m-index-reveal bacf7f7f7">
+                    <div class="m-index-mod m-index-newArrivals m-index-reveal">
+                        <div class="m-index-mod-hd">
+                            <h3>上架新品</h3>
+                            <a class="m-index-mod-more" href="javascript:;" data-href="?c=list&amp;ordername=2">更多</a>
+                        </div>
+                        <div class="m-index-mod-bd">
+                            <ul class="w-goodsList w-goodsList-brief m-index-newArrivals-list">
+                                {{#list new.item}}
+                                    <li class="w-goodsList-item">
+                                        <div class="w-goods w-goods-brief">
+                                            <a class="w-goods-pic" href="javascript:;" data-href="./?c=detail&amp;id={{id}}" style="background-image:url({{img}});"></a>
+                                            <p class="w-goods-user f-txtabb"><a href="javascript:;" data-href="./?c=detail&amp;id={{id}}">{{{goodsName}}}</a></p>
+                                        </div>
+                                    </li>
+                                {{/list}}
+                            </ul>
+                        </div>
+                </div>
+            {{/if}}
+        {{#if latestAnnouncement.item}}
+            <div class="m-index-mod  m-index-reveal">
+                <div class="m-index-mod-hd">
+                    <h3>最新揭晓</h3>
+                    <a class="m-index-mod-more" href="javascript:;" data-href="?c=latest">更多</a>
+                </div>
+                <div class="m-index-mod-bd">
+                    <ul class="m-index-reveal-list w-goodsList-brief">
+                    {{#list latestAnnouncement.item}}
+                        <li class="w-goodsList-item">
+                            <div class="w-goods w-goods-brief">
+                                <a class="w-goods-pic" href="javascript:;" data-href="./?c=detail&amp;id={{shopid}}" style="background-image:url({{thumb}});"></a>
+                                <p class="w-goods-user f-txtabb">恭喜<a href="javascript:;" data-href="./?c=profile&amp;id={{userid}}">{{username}}</a>获得</p>
+                            </div>
+                        </li>
+                    {{/list}}
+                    </ul>
+                </div>
+            </div>
+        {{/if}}
+            {{#if free.item}}
+            <div class="m-index-mod m-index-newArrivals m-index-reveal">
+
+                   <div class="m-index-mod-hd">
+
+                       <h3>免费专区</h3>
+
+                       <a class="m-index-mod-more" href="javascript:;" data-href="?c=free">更多</a>
+
+                   </div>
+
+                   <div class="m-index-mod-bd">
+
+                       <ul class="w-goodsList w-goodsList-brief m-index-newArrivals-list">
+
+                         {{#list free.item}}
+
+                          <li class="w-goodsList-item">
+
+                              <div class="w-goods w-goods-brief">
+
+                                   <a class="w-goods-pic" href="javascript:;" data-href="./?c=detail&amp;id={{id}}" style="background-image:url({{img}});">
+
+                                  {{#if q_uid}}
+
+                                   <img src="images/sale.png" />
+
+                                   {{/if}}
+
+                                   </a>
+
+                                  <p class="w-goods-user f-txtabb"><a href="javascript:;" data-href="./?c=detail&amp;id={{id}}">{{{goodsName}}}</a></p>
+
+                               </div>
+
+                          </li>
+
+                        {{/list}}
+
+                     </ul>
+
+                 </div>
+              </div>
+
+          {{/if}}
+
+
+            {{#if limit.item}}
+
+                       <div class="m-index-mod m-index-newArrivals">
+
+                          <div class="m-index-mod-hd">
+
+                              <h3>限购专区</h3>
+
+        <a class="m-index-mod-more" href="javascript:;" data-href="?c=list&amp;ordername=4">更多</a>
+
+                          </div>
+
+                           <div class="m-index-mod-bd">
+
+                              <ul class="w-goodsList w-goodsList-brief m-index-newArrivals-list">
+
+                                {{#list limit.item}}
+
+                                 <li class="w-goodsList-item">
+
+                                    <div class="w-goods w-goods-brief">
+
+                                         <a class="w-goods-pic" href="javascript:;" data-href="./?c=detail&amp;id={{id}}" style="background-image:url({{img}});"></a>
+
+                                        <p class="w-goods-user f-txtabb"><a href="javascript:;" data-href="./?c=detail&amp;id={{id}}">{{{goodsName}}}</a></p>
+
+                                     </div>
+                                 </li>
+
+                                {{/list}}
+
+                            </ul>
+
+                        </div>
+                </div>
+        {{/if}}
+
+        {{#if popular.item}}
+            <div class="m-index-mod m-index-newArrivals">
+                <div class="m-index-mod-hd">
+                    <h3>今日热门</h3>
+                    <a class="m-index-mod-more" href="javascript:;" data-href="?c=list">更多</a>
+                </div>
+                <div class="m-index-mod-bd">
+                    <ul class="w-goodsList w-goodsList-s m-index-popular-list">
+                    {{#list popular.item}}
+                        <li class="w-goodsList-item">
+                            <div class="w-goods w-goods-ing" data-gi="{{shopid}}">
+                                <a class="w-goods-pic" href="javascript:;" data-href="./?c=detail&amp;id={{shopid}}" data-img="{{shopid}}" style="background-image:url({{thumb}});"></a>
+                                <div class="w-goods-info">
+                                    <p class="w-goods-title f-txtabb"><a href="javascript:;" data-href="./?c=detail&amp;id={{shopid}}">{{shopTitle}}</a></p>
+                                    <div class="w-progressBar">
+                                        <p class="txt">开奖进度<strong>{{#percent currentNum totalNum}}{{#toInt val}}{{val}}{{/toInt}}{{/percent}}%</strong></p>
+                                        <p class="wrap">
+                                            <span class="bar" style="width:{{#percent currentNum totalNum}}{{val}}{{/percent}}%;"><i class="color"></i></span>
+                                        </p>
+                                    </div>
+                                </div>
+                                {{#gt totalNum currentNum}}
+                                <div class="w-goods-shortFunc">
+                                    <a class="w-button w-button-round w-button-addToCart" href="javascript:;" data-addcart="{{shopid}}"></a>
+                                </div>
+                                {{/gt}}
+                            </div>
+                        </li>
+                    {{/list}}
+                    </ul>
+                    <div class="w-more">
+                        <a href="javascript:;" data-href="?c=list">点击查看更多商品</a>
+                    </div>
+                </div>
+                </div>
+            </div>
+        {{/if}}
+        </div>
+    </div>
+</div>
+<script>
+
+    function setCircle(){
+        var lotteryCon=$('.lottery-con');
+        //    var lotteryConW=lotteryCon.width();
+        var lotteryConW=$('body').width();
+        //    console.log(lotteryConW);
+        var calc=~~lotteryConW/10;
+
+        for(var i=0,spanL=calc+1;i<spanL;i++){
+            lotteryCon.append('<span class="circle"></span>')
+        }
+
+        $('.circle').each(function(i){
+            var left=i*10;
+            $(this).css({'left':left})
+        })
+    }
+
+    setCircle();
+
+    window.onresize=function(){
+        $('.lottery-con').html('');
+        setCircle();
+    }
+</script>

@@ -1,0 +1,31 @@
+<form class="m-user" id="shareForm">
+	<input type="hidden" name="goodsId" value="{{id}}">
+    <div class="m-simpleHeader">
+        <a href="javascript:;" class="m-simpleHeader-back" data-fn="back"><i class="ico ico-back"></i></a>
+        <button type="submit" class="m-simpleHeader-ok">发布</button>
+        <h1>晒单</h1>
+    </div>
+    <div class="m-user-addrAdd">
+        <div class="m-user-bar">
+            <div class="w-inputBar w-bar">
+                <div class="w-bar-control">
+                    <input class="w-bar-input" type="text" name="title" placeholder="晒单主题，不少于6个字" value="">
+                </div>
+            </div>
+            <div class="w-inputBar w-bar">
+                <div class="w-bar-control">
+                    <textarea class="w-bar-input" name="content" placeholder="获奖感言，不少于30字" style="height:182px;"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="photo-files f-clear" id="photoList">
+        <div class="photo-file-wrap file-normal">
+            <div class="photo-file">
+                <img src="images/add.png">
+                <input type="file" accept="image/*">
+            </div>
+            <a class="w-button w-button-round w-button-addToCart" href="javascript:;"></a>
+        </div>
+    </div>
+</form>

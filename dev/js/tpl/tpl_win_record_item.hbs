@@ -1,0 +1,43 @@
+{{#list item}}
+<li class="w-goodsList-item">
+    <div class="w-goods w-goods-l w-goods-ing m-user-goods m-user-goods-winList">
+        <div class="w-goods-pic">
+            <a href="javascript:;" data-href="?c=detail&amp;id={{goodsid}}">
+                <img src="{{goodsimg}}">
+            </a>
+        </div>
+        <div class="w-goods-info">
+            <p class="w-goods-title f-txtabb"><a href="javascript:;" data-href="?c=detail&amp;id={{goodsid}}">{{goodsname}}</a></p>
+            <p class="w-goods-price">总需：{{totalNeed}} 人次</p>
+            <p class="w-goods-price">期号：{{periodsNo}}</p>
+            <p class="m-user-goods-code">幸运号码：<span class="txt-impt">{{luckyNumber}}</span></p>
+            <div class="m-user-goods-common">本期参与：{{buyNumber}}人次</div>
+            <div class="m-user-box m-user-goods-calTime">
+                <p class="m-user-box-name">揭晓时间：</p>
+                <p class="m-user-box-cont">{{endTime}}</p>
+            </div>
+
+             {{#if is_virtual}}
+                {{#if receiver}}
+                    {{#if sureShare}}
+                        <a href="javascript:;" class="w-button w-button-main w-button-s" data-href="?c=shareEdit&amp;id={{goodsid}}">晒单分享拿积分</a>
+                    {{/if}}
+                    {{#if areadyShare}}
+                        <p class="m-user-goods-common">商品状态：<span class="txt-suc">{{deliveryStatus}}</span></p>
+                    {{/if}}
+                {{else}}
+                    <a href="{{../../../apiDomain}}/Auto/receive?token={{../../../token}}&id={{goodsid}}" class="w-button w-button-main w-button-s">领取奖品</a>
+                    {{!-- <a href="javascript:;" class="w-button w-button-main w-button-s" data-href="?c=receiver&amp;id={{goodsid}}">领取奖品</a> --}}
+                {{/if}}
+             {{else}}
+                 {{#if deliveryStatus}}<p class="m-user-goods-common">商品状态：<span class="txt-suc">{{deliveryStatus}}</span></p>{{/if}}
+                 {{#if sureShare}}
+                 <a href="javascript:;" class="w-button w-button-main w-button-s" data-href="?c=shareEdit&amp;id={{goodsid}}">晒单分享拿积分</a>
+                 {{/if}}
+             {{/if}}
+        </div>
+        <div class="m-user-goods-ext"><a class="winLink" href="javascript:;" data-href="?c=winDetail&amp;id={{goodsid}}"><b class="ico-next"></b></a></div>
+
+    </div>
+</li>
+{{/list}}

@@ -1,0 +1,15 @@
+<div class="m-user">
+    <div class="m-simpleHeader">
+        <a href="javascript:;" class="m-simpleHeader-back" data-fn="back"><i class="ico ico-back"></i></a>
+        <h1>夺宝记录</h1>
+    </div>
+    <div class="m-user-duobaoRecord">
+        <div class="w-nav w-nav-hasSplt w-nav-hasBorder">
+            <div class="w-nav-item{{^if queryData.tab}} w-nav-item-on{{/if}}" data-tabhref="?c=buyRecord"><span class="w-nav-txt">全部</span></div>
+            <div class="w-nav-item{{#eq queryData.tab 'going'}} w-nav-item-on{{/eq}}" data-tabhref="?c=buyRecord&amp;tab=going"><span class="w-nav-txt">进行中</span></div>
+            <div class="w-nav-item{{#eq queryData.tab 'end'}} w-nav-item-on{{/eq}}" data-tabhref="?c=buyRecord&amp;tab=end"><span class="w-nav-txt">已揭晓</span></div>
+        </div>
+        <ul class="w-goodsList w-goodsList-l m-user-goodsList" id="buyRecordList"></ul>
+        <div class="w-more" id="buyRecordMore"><b class="ico ico-loading"></b> 努力加载中</div>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+{{#if item}}
+{{#list item}}
+    <div class="item{{#if default}} default{{/if}}{{#eq id ../id}} selected{{/eq}}" data-id="{{id}}">
+        <div class="name">{{consignee}}</div>
+        <div class="mobile">{{phone}}</div>
+        <div class="detail">{{#if default}}<span class="m-user-link dftTag">[默认]</span>{{/if}} {{province}} {{city}} {{area}} {{address}}</div>
+    </div>
+{{/list}}
+{{/if}}

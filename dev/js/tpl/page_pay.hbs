@@ -1,0 +1,78 @@
+<div class="m-simpleHeader"><a href="javascript:;" class="m-simpleHeader-back" data-fn="back"><i class="ico ico-back"></i></a>
+    <h1>订单支付</h1></div>
+<div class="m-pay-order">
+    <form id="couponForm">
+        <div class="m-pay-order-list">
+            {{#list item}}
+            <div class="m-pay-order-list-item"><span class="m-pay-order-list-item-name">{{goodsName}}</span><span class="m-pay-order-list-item-num"><b class="txt-red">{{number}}</b>人次</span></div>
+            {{#if coupon}}
+            {{#list coupon}}
+                <div class="w-couponBar w-bar w-{{id}} w-{{s_id}}">
+                <span>{{title}}(抵扣 {{money}} 元)</span>
+                <div class="w-bar-ext">
+                <input type="checkbox" value="{{id}}" sid="{{s_id}}" name="coupon[]">
+                <b class="w-checkbox"></b>
+                </div>
+                </div>
+            {{/list}}
+            {{/if}}
+            {{/list}}
+
+        </div>
+    </form>
+    <div class="m-pay-order-total">商品合计：<b class="txt-red">{{total}}夺宝币</b></div>
+    <form id="payForm">
+        <div class="m-pay-order-options">
+            {{#if forbidden_balances}}
+
+
+
+            {{else}}
+                {{#egt money total}}
+                <div class="w-checkBar w-bar w-checkBar-checked"><span>余额支付（余额：{{money}}夺宝币）</span>
+                    <div class="w-bar-ext"><input type="radio" name="paytype" value="balances" checked="checked"><b class="w-checkbox"></b></div>
+                </div>
+                {{else}}
+                <div class="w-checkBar w-bar w-checkBar-disabled"><span>余额支付（余额：{{money}}夺宝币）</span></div>
+                {{/egt}}
+            {{/if}}
+            {{#if isWeixin}}
+            <div class="w-option w-option-unfold">
+                <div class="w-bar"><span>其他支付方式<span class="txt-red w-bar-extText">{{#toFixed total 2}}{{val}}{{/toFixed}}元</span></span>
+                </div>
+                <div class="w-bar-content">
+                    <div class="pro-radioGroup">
+                        {{#lt money total}}
+                        <div class="w-radioBar w-bar w-radioBar-checked"><b class="w-radio"></b>在线支付
+                            <div class="w-bar-ext">
+                                <input type="radio" name="paytype" value="weixin" checked="checked">
+                            </div>
+                        </div>
+                        {{else}}
+                        <div class="w-radioBar w-bar"><b class="w-radio"></b>在线支付
+                            <div class="w-bar-ext">
+                                <input type="radio" name="paytype" value="weixin">
+                            </div>
+                        </div>
+                        {{/lt}}
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+        </div>
+        {{#if coupon.item}}
+            {{#list coupon.item}}
+                <div class="w-couponBar w-bar">
+                <span>{{title}}(抵扣 {{money}} 元)</span>
+                <div class="w-bar-ext">
+                <input type="checkbox" value="{{id}}" name="coupon[]">
+                <b class="w-checkbox"></b>
+                </div>
+                </div>
+            {{/list}}
+        {{/if}}
+        <div class="m-pay-order-submit">
+            <button type="submit" class="w-button w-button-main w-button-l">确认支付</button>
+        </div>
+    </form>
+</div>

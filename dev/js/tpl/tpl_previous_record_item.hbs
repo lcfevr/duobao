@@ -1,0 +1,17 @@
+{{#list item}}
+    <li class="w-record m-winRecord-revealed">
+        <div class="w-record-title"><a href="javascript:;">期号：{{periodsNo}} ( 揭晓时间：{{announcedTime}} )</a></div>
+        <div class="w-record-cnt f-clear">
+            <div class="w-record-avatar">
+                <a href="javascript:;" data-href="?c=profile&amp;id={{userid}}"><img width="90" height="90" src="{{#if userimg}}{{userimg}}{{else}}images/90.jpeg{{/if}}"></a>
+            </div>
+            <div class="w-record-detail">
+                <p class="f-txtabb">获奖者：<a href="javascript:;" data-href="?c=profile&amp;id={{userid}}">{{username}}</a></p>
+                <p class="f-txtabb"><span class="txt-green">( IP：{{userip}} )</span></p>
+                <p>用户ID：{{userid}} (唯一不变标识)</p>
+                <p>幸运号码：<span class="txt-red">{{usercode}}</span></p>
+                <p>本期参与：<span class="txt-red">{{personTimes}}</span>人次</p>
+            </div>
+        </div>
+    </li>
+{{/list}}

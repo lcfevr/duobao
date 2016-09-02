@@ -1,0 +1,31 @@
+<div class="g-body">
+    <div class="m-help">
+    <div class="m-simpleHeader">
+        <a href="javascript:;" data-fn="back" class="m-simpleHeader-back"><i class="ico-back"></i></a>
+        <h1>{{#if appName}}{{appName}}{{else}}邵阳夺宝{{/if}}</h1>
+    </div>
+        <div class="g-wrap">
+            <div class="m-help-main">
+                <h3>夺宝简介</h3>
+                <div class="m-help-main-txt">
+                    <p class="m-help-main-intro">一元夺宝，就是指用户花费1元兑换1个夺宝币，凭夺宝币可参与某件商品的众筹购买，商品分配对应数量的号码，每个号码价值1个夺宝币；当一件商品所有号码售出后，根据预先制定的规则计算出一个幸运号码，持有该号码的用户，直接获得该商品。</p>
+                </div>
+            </div>
+            <div class="m-help-ext">
+                <h4>夺宝规则</h4>
+                <ol>
+                    <li><span class="index">1</span><b class="txt-red">获得夺宝币：</b>用户充值1元，即可获得1个夺宝币；</li>
+                    <li><span class="index">2</span><b class="txt-red">挑选喜欢的商品：</b>根据商品价值，商品分配对应数量的号码，用户可根据需求选择相应的数量</li>
+                    <li><span class="index">2</span><b class="txt-red">支付：</b>用户选择数量完毕，按照一个夺宝币支付一个号码进行支付，也可以通过其它支付接口进行支付</li>
+                    <li><span class="index">3</span><b class="txt-red">获得商品：</b>当所有号码都被分配完毕后，系统根据规则计算出1个幸运号码，持有该号码的用户，直接获得该商品。</li>
+                </ol>
+                <h4>幸运号码计算规则</h4>
+                <ol>
+                    <li><span class="index">1</span>商品的最后一个号码分配完毕后，将公示该分配时间点前本站全部商品的最后50个参与时间；</li>
+                    <li><span class="index">2</span>将这50个时间的数值进行求和（得出数值A）（每个时间按时、分、秒、毫秒的顺序组合，如20:15:25.362则为201525362）；</li>
+                    <li><span class="index">3</span>（数值A）除以该商品总需人次得到的余数 + 原始数 10000001，得到最终幸运号码，拥有该幸运号码者，直接获得该商品。</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>

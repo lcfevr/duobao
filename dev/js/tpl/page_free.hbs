@@ -1,0 +1,35 @@
+<div class="g-body">
+    <div class="m-winRecord">
+        <div class="m-simpleHeader">
+            <a href="javascript:;" class="m-simpleHeader-back" data-fn="back"><i class="ico-back"></i></a>
+            <h1>免费专属</h1>
+        </div>
+        {{!-- 正文 --}}
+        <div class="g-wrap" style="margin-top:39px">
+            {{!-- 商品列表 --}}
+            <div class="m-list-content" id='listwrap'>
+                <div class="w-loading" style="display: none;">
+                    <img style="display:inline;vertical-align:middle" width="20" height="20" src="http://mimg.127.net/p/yymobile/lib/img/common/loading.gif"> 正在努力加载中……
+                </div>
+                <ul class="w-goodsList w-goodsList-l m-list-goodsList" >
+                {{#if data}}
+                {{#list data}}
+                <li class="w-goodsList-item">
+                    <div class="w-goods w-goods-l w-goods-ing" data-gi="{{id}}">
+                        <a href="javascript:;" class="w-goods-link" data-href="?c=detail&amp;id={{id}}">
+                            {{!-- <i class="ico ico-label ico-label-ten"></i> --}}
+                            <div class="w-goods-pic" data-img="{{id}}" style="background-image:url({{img}})"></div>
+                            <div class="w-goods-info">
+                                <div class="w-goods-title f-txtabb f-breakword">{{goodsName}}</div>
+                                <div class="w-progressBar"><p class="wrap"><span class="bar" style="width:{{#percent currentNum totalNum}}{{val}}{{/percent}}%;"><i class="color"></i></span></p><ul class="txt"><li class="txt-l"><p>总需{{totalNum}} 人次</p></li><li class="txt-r"><p>剩余<b class="txt-blue">{{#subtract totalNum currentNum}}{{val}}{{/subtract}}</b></p></li></ul></div>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+                {{/list}}
+                {{/if}}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

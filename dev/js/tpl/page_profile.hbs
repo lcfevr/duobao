@@ -1,0 +1,38 @@
+<div class="m-user">
+    <div class="m-simpleHeader">
+        <a href="javascript:;" class="m-simpleHeader-back" data-fn="back"><i class="ico ico-back"></i></a>
+        <a href="javascript:;" class="m-simpleHeader-ok" data-href="./"><i class="ico ico-home"></i></a>
+        <h1>个人中心</h1>
+    </div>
+    <div class="m-user-index">
+        <div class="m-user-summary m-user-summary-simple">
+            <div class="info">
+                <div class="m-user-avatar"><img width="50" height="50" src="{{photo}}"></div>
+                <div class="txt">
+                    <div class="name">{{name}}</div>
+                    <div class="id">ID：{{id}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="w-nav w-nav-hasSplt w-nav-hasBorder">
+            <div class="w-nav-item{{#if queryData.tab}}{{else}} w-nav-item-on{{/if}}" data-tabhref="?c=profile&amp;id={{queryData.id}}"><span class="w-nav-txt">夺宝记录<span class="num"></span></span>
+            </div>
+            <div class="w-nav-item{{#eq queryData.tab 'win'}} w-nav-item-on{{/eq}}" data-tabhref="?c=profile&amp;id={{queryData.id}}&amp;tab=win"><span class="w-nav-txt">中奖记录</span></div>
+            <div class="w-nav-item{{#eq queryData.tab 'share'}} w-nav-item-on{{/eq}}" data-tabhref="?c=profile&amp;id={{queryData.id}}&amp;tab=share"><span class="w-nav-txt">晒单</span></div>
+        </div>
+    </div>
+    {{#eq queryData.tab 'share'}}
+    <div class="m-user-shareList">
+        <div class="w-shareList" id="profileList"></div>
+        <div class="w-more" id="profileListMore"><b class="ico ico-loading"></b> 努力加载中</div>
+    </div>
+    {{else}}
+    <div class="m-user-duobaoRecord">
+        <ul class="w-goodsList w-goodsList-l m-user-goodsList" id="profileList"></ul>
+        <div class="w-more" id="profileListMore"><b class="ico ico-loading"></b> 努力加载中</div>
+    </div>
+    {{/eq}}
+    <div class="m-user-wishList" style="display: none;" afmoldstyle="block">
+        <div class="m-user-blank">没有心愿单哦~</div>
+    </div>
+</div>

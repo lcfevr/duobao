@@ -1,0 +1,83 @@
+<div class="m-user">
+    <div class="m-simpleHeader">
+        <a href="javascript:;" class="m-simpleHeader-back" data-fn="back"><i class="ico ico-back"></i></a>
+        <h1>个人中心</h1>
+    </div>
+    <div class="cdk-container">
+        <div class="per-upper" data-href="?c=userDetail">
+            <div class="per-headImg"><img src="{{#if img}}{{img}}{{else}}images/90.jpeg{{/if}}"/></div>
+            <p class="per-nickName">{{#if username}}{{username}}{{else}}&nbsp;{{/if}}</p>
+            <p class="per-userId">ID:{{#if id}}{{id}}{{else}}&nbsp;{{/if}}</p>
+
+            <button data-href="?c=recharge" class="per-btn per-btnPos_1">充值</button>
+            <div style="position:absolute;right: .2rem;top:-.73rem;width: auto;"><b class="per-ico-next" style="border-color: #fff;"></b></div>
+            <!--{{#if token}}-->
+                <!--{{#if is_qiandao}}-->
+                    <!--<button class="per-btn per-btnPos_2">已签</button>-->
+                <!--{{else}}-->
+                    <!--<button class="per-btn per-btnPos_2"  onclick="user_sign($(this))">签到</button>-->
+                <!--<script>-->
+                    <!--function user_sign(that){-->
+                        <!--$(that).attr('onclick','');-->
+                        <!--$.ajax({-->
+                            <!--type:"get",-->
+                            <!--data:"token={{token}}",-->
+                            <!--url:"{{apiDomain}}/Invita/user_sign",-->
+                            <!--success: function (data) {-->
+                                <!--if(data.status == 200){-->
+                                    <!--$(that)[0].innerText = '已签';-->
+                                <!--}else{-->
+                                    <!--$(that)[0].attr('onclick','user_sign($(this))');-->
+                                <!--}-->
+                            <!--},-->
+                        <!--});-->
+                    <!--}-->
+                <!--</script>-->
+                <!--{{/if}}-->
+            <!--{{/if}}-->
+        </div>
+        <div class="per-sign-footer">
+            <ul>
+                <li>
+                    <span class="per-span_1">{{surplus_points}}</span>
+                        <span class="per-span_2">
+                        <a href="{{apiDomain}}/Invita/showInvitaPage?token={{token}}" style="color:#aeaeae">积分</a>
+                        </span>
+                </li>
+                <li class="per-gradientBorder">
+                    <span class="per-span_1">{{money}}</span>
+                    <span class="per-span_2" style="color:#aeaeae">余额</span>
+                </li>
+                <li>
+                    <span class="per-span_1">{{coupon_num}}</span>
+                        <span class="per-span_2">
+                        <a href="javascript:;" data-href="?c=coupon" style="color:#aeaeae">优惠券</a>
+                        </span>
+                </li>
+            </ul>
+        </div>
+        <div class="per-user-bar">
+            <a href="javascript:;" class="per-w-bar" data-href="?c=buyRecord"><i class="iconfonts">&#xe628;</i><span style="vertical-align: middle;">夺宝记录</span><span class="per-w-bar-ext"><b class="per-ico-next"></b></span> </a>
+            <a href="javascript:;" class="per-w-bar" data-href="?c=chargeRecord"><i class="iconfonts">&#xe629;</i><span>充值记录</span><span class="per-w-bar-ext"><b class="per-ico-next"></b></span></a>
+            <a href="javascript:;" class="per-w-bar" data-href="?c=winRecord"><i class="iconfonts">&#xe62a;</i><span>中奖记录</span><span class="per-w-bar-ext"><b class="per-ico-next"></b></span></a>
+            <a href="javascript:;" class="per-w-bar mt10" data-href="?c=share&amp;uid={{id}}"><i class="iconfonts">&#xe62b;</i><span>我的晒单</span><span class="per-w-bar-ext"><b class="per-ico-next"></b></span></a>
+            {{#if token}}
+                <a href="{{apiDomain}}/Invita/showInvitaPage?token={{token}}" class="per-w-bar mt10"><i class="iconfonts">&#xe62c;</i><span>我的积分</span><span class="per-w-bar-ext"><b class="per-ico-next"></b></span></a>
+                <a href="{{apiDomain}}/Card/show_page?token={{token}}" class="per-w-bar "><i class="iconfonts">&#xe62d;</i><span>我的卡券</span><span class="per-w-bar-ext"><b class="per-ico-next"></b></span></a>
+            {{/if}}
+            <a href="javascript:;" class="per-w-bar " data-href="?c=coupon"><i class="iconfonts">&#xe62d;</i><span>我的优惠券</span><span class="per-w-bar-ext"><b class="per-ico-next"></b></span></a>
+            <a href="javascript:;" class="per-w-bar mt10" data-href="?c=resetPassword"><i class="iconfonts">&#xe62e;</i><span>修改密码</span><span class="per-w-bar-ext"><b class="per-ico-next"></b></span></a>
+            <a href="javascript:;" class="per-w-bar per-m-user-bar-margin per-logout" id="logOut">退出登录</a>
+        </div>
+    </div>
+</div>
+<script>
+    var deviceWidth = document.documentElement.clientWidth;
+    if(deviceWidth > 640) deviceWidth = 640;
+    document.documentElement.style.fontSize = deviceWidth / 6.4 + 'px';
+</script>
+<style>
+    body{
+        background: #f4f4f4;
+    }
+</style>

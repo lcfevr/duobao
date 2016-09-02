@@ -1,0 +1,180 @@
+
+<div class="cdk-container">
+<div class="cdk-body">
+    <div class="m-simpleHeader">
+        <a href="javascript:;" data-fn="back" class="m-simpleHeader-back"><i class="cdk-back"></i></a>
+        <h1>我的优惠券</h1>
+    </div>
+
+        <div class="cdk-head">
+            <button class="cdk-nUse">可使用的优惠券</button>
+            <button class="cdk-yUse">已使用/已过期</button>
+            <div class="cdk-message"></div>
+            <div class="cdk-circle">{{total}}</div>
+        </div>
+        <div class="cdk-tips">
+            您有<span>{{allowedTotal}}</span>张优惠券可以领取，
+            <a class="coupon_allowed_give" href="javascript:;">立即领取</a>
+            <i class="tipClose">×</i>
+        </div>
+        <div class="cdk-show dn">
+            {{#if used.item}}
+             {{#list used.item}}
+             <div id="coupon_{{id}}" class="cdk-myKey">
+                <div class="cdk-kLeft bac-haveUsed">
+                    <div class="cdk-borderContainer">
+                        <span class="cdk-borderLRd"></span>
+                        <span class="cdk-borderLRd"></span>
+                        <span class="cdk-borderLRd"></span>
+                        <span class="cdk-borderLRd"></span>
+                        <span class="cdk-borderLRd"></span>
+                        <span class="cdk-borderLRd"></span>
+                    </div>
+                    <ul class="cdk-wrap">
+                        <li>￥<span>{{money}}</span>{{title}}</li>
+                        <li>&nbsp;&nbsp;单个商品满<span>{{min_consumer}}</span>元使用</li>
+                        <li>【适用<span>{{use_desc}}</span>商品】</li>
+                    </ul>
+                    {{#eq is_use 1}}
+                    <img src="../images/status_2.png" class="cdk-status cdk-2"/>
+                    {{else}}
+                    <img src="../images/status_1.png" class="cdk-status cdk-1"/>
+                    {{/eq}}
+                </div>
+                <div class="cdk-kRight">
+                    <div class="cdk-borderContainer">
+                        <span class="cdk-borderRRd"></span>
+                        <span class="cdk-borderRRd"></span>
+                        <span class="cdk-borderRRd"></span>
+                        <span class="cdk-borderRRd"></span>
+                        <span class="cdk-borderRRd"></span>
+                        <span class="cdk-borderRRd"></span>
+                    </div>
+
+                    <div class="cdk-time">使用有效期：<br/><span>{{use_start_time}}</span>至<br/><span>{{use_end_time}}</span></span></div>
+                    <p class="cdk-deleteKey"><a class="hideCoupon" data-id="{{id}}" href="javascript:;">删除本券</a></p>
+                </div>
+             </div>
+              {{/list}}
+             {{/if}}
+            <div class="cdk-nomore ">没有更多了</div>
+        </div>
+        <div class="cdk-show">
+            {{#if unused.item}}
+            {{#list unused.item}}
+            <div class="cdk-myKey">
+                <div class="cdk-kLeft bac-noUsed">
+                    <div class="sdk-expire"><span>{{over_day}}</span>天后过期</div>
+                    <div class="cdk-borderContainer">
+                        <span class="cdk-borderLRd"></span>
+                        <span class="cdk-borderLRd"></span>
+                        <span class="cdk-borderLRd"></span>
+                        <span class="cdk-borderLRd"></span>
+                        <span class="cdk-borderLRd"></span>
+                        <span class="cdk-borderLRd"></span>
+                    </div>
+                    <ul class="cdk-wrap">
+                        <li>￥<span>{{money}}</span>{{title}}</li>
+                        <li>&nbsp;&nbsp;单个商品满<span>{{min_consumer}}</span>元使用</li>
+                        <li>【适用<span>{{use_desc}}</span>商品】</li>
+                    </ul>
+                </div>
+                <div class="cdk-kRight">
+                    <div class="cdk-borderContainer">
+                        <span class="cdk-borderRRd"></span>
+                        <span class="cdk-borderRRd"></span>
+                        <span class="cdk-borderRRd"></span>
+                        <span class="cdk-borderRRd"></span>
+                        <span class="cdk-borderRRd"></span>
+                        <span class="cdk-borderRRd"></span>
+                    </div>
+
+                    <div class="cdk-time">使用有效期：<br/><span>{{use_start_time}}</span>至<br/><span>{{use_end_time}}</span></span></div>
+                    <p class="cdk-useNow"><a data-href="?c=list" href="javascript:;">立即使用</a><span class="trangleRight"></span></p>
+                </div>
+            </div>
+            {{/list}}
+            {{/if}}
+            <div class="cdk-nomore">没有更多了</div>
+        </div>
+</div>
+</div>
+<script>
+   $(function(){
+       $('.cdk-nUse').on('click',function(){
+            $(this).css({'background':'#db3652','color':'#fff'}).next().css({'background':'#fff','color':'#db3652'});
+           $('.cdk-show:eq(0)').addClass('dn');
+           $('.cdk-show:eq(1)').removeClass('dn');
+
+       })
+
+       $('.cdk-yUse').on('click',function(){
+           $(this).css({'background':'#db3652','color':'#fff'}).prev().css({'background':'#fff','color':'#db3652'});
+           $('.cdk-show:eq(0)').removeClass('dn');
+           $('.cdk-show:eq(1)').addClass('dn');
+
+       })
+
+       $('.cdk-nUse').click();
+
+       $('.tipClose').on('click',function(){
+           $('.cdk-tips').remove();
+       })
+
+   })
+</script>
+<script>
+        var deviceWidth = document.documentElement.clientWidth;
+        if(deviceWidth > 640) deviceWidth = 640;
+        document.documentElement.style.fontSize = deviceWidth / 6.4 + 'px';
+</script>
+
+<div id="coupon_allowed" class="cdk-container dn">
+<div class="cdk-body">
+    <div class="m-simpleHeader">
+        <a href="javascript:;" data-fn="back" class="m-simpleHeader-back"><i class="cdk-back"></i></a>
+        <h1>领取优惠券</h1>
+    </div>
+    <div class="cdk-tips">
+        您有<span>{{allowedTotal}}</span>张优惠券可以领取，点击
+        <a data-href="?c=coupon" href="javascript:;">查看我的优惠券</a>
+    </div>
+    <div class="cdk-show">
+        {{#if allowed.item}}
+         {{#list allowed.item}}
+        <div id="allowed_{{id}}" class="cdk-myKey">
+            <div class="cdk-kLeft bac-noUsed">
+                <div class="cdk-borderContainer">
+                    <span class="cdk-borderLRd"></span>
+                    <span class="cdk-borderLRd"></span>
+                    <span class="cdk-borderLRd"></span>
+                    <span class="cdk-borderLRd"></span>
+                    <span class="cdk-borderLRd"></span>
+                    <span class="cdk-borderLRd"></span>
+                </div>
+                <ul class="cdk-wrap">
+                    <li>￥<span>{{money}}</span>{{title}}</li>
+                    <li>&nbsp;&nbsp;单个商品满<span>{{min_consumer}}</span>元使用</li>
+                    <li>【适用<span>{{use_desc}}</span>商品】</li>
+                </ul>
+            </div>
+            <div class="cdk-kRight">
+                <div class="cdk-borderContainer">
+                    <span class="cdk-borderRRd"></span>
+                    <span class="cdk-borderRRd"></span>
+                    <span class="cdk-borderRRd"></span>
+                    <span class="cdk-borderRRd"></span>
+                    <span class="cdk-borderRRd"></span>
+                    <span class="cdk-borderRRd"></span>
+                </div>
+
+                <div class="cdk-time">领取有效期：<br/><span>{{get_start_time}}</span>至<br/><span>{{get_end_time}}</span></span></div>
+                <p class="cdk-deleteKey"><a class="coupon_allowed_receive" data-id="{{id}}" href="javascript:;">领取优惠券</a></p>
+            </div>
+        </div>
+         {{/list}}
+        {{/if}}
+        <div class="cdk-nomore ">没有更多了</div>
+    </div>
+   </div>
+</div>

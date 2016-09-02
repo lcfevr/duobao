@@ -1,0 +1,14 @@
+{{#list item}}
+<li>
+    <div class="m-detail-record-time">{{time}}</div>
+    <div class="f-clear">
+        <div class="avatar">
+            <a href="javascript:;" data-href="?c=profile&amp;id={{userid}}"><img width="35" height="35" src="{{#if userimg}}{{userimg}}{{else}}images/90.jpeg{{/if}}"></a>
+        </div>
+        <div class="text">
+            <p class="f-breakword"><a href="javascript:;" data-href="?c=profile&amp;id={{userid}}">{{username}}</a> <span class="address">(IP：{{userip}})</span></p>
+            <p><span class="num">参与了<span class="txt-red">{{personNo}}</span>人次</span> {{time}}</p>
+        </div>
+    </div>
+</li>
+{{/list}}

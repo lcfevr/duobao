@@ -1,0 +1,16 @@
+<div class="m-user">
+    <div class="m-simpleHeader">
+        <a href="javascript:;" class="m-simpleHeader-back" data-fn="back"><i class="ico ico-back"></i></a>
+        <a href="javascript:;" class="m-simpleHeader-ok" data-href="?c=recharge">充值</a>
+        <h1>充值记录</h1>
+    </div>
+    <div class="m-user-chargeRecord">
+        {{#if item}}
+        <div class="remark">
+            <p class="item">目前仅提供最近三个月的充值记录。</p>
+        </div>
+        {{/if}}
+        <div class="list" id="chargeRecordList"></div>
+        <div class="w-more" id="chargeRecordMore">{{#if item}}<b class="ico ico-loading"></b> 努力加载中{{else}}暂无充值记录{{/if}}</div>
+    </div>
+</div>

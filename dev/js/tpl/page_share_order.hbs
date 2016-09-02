@@ -1,0 +1,21 @@
+<div class="g-body">
+    {{#if uid}}
+        <div class="m-simpleHeader">
+            <a href="javascript:;" class="m-simpleHeader-back" data-fn="back"><i class="ico-back"></i></a>
+            <h1>我的晒单记录</h1>
+        </div>
+    {{else}}
+        {{#neq id '0'}}
+        <div class="m-simpleHeader">
+            <a href="javascript:;" class="m-simpleHeader-back" data-fn="back"><i class="ico-back"></i></a>
+            <h1>晒单记录</h1>
+        </div>
+        {{/neq}}
+    {{/if}}
+    {{#if item}}
+    <div class="w-shareList" id="shareOrderList"></div>
+    <div class="w-more" id="shareOrderMore"><b class="ico ico-loading"></b> 努力加载中</div>
+    {{else}}
+    <div class="w-more" id="shareOrderMore">还没有晒单记录</div>
+    {{/if}}
+</div>

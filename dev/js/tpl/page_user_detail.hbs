@@ -1,0 +1,60 @@
+<div class="m-user" id="userDetail">
+    <div class="m-simpleHeader">
+        <a href="javascript:;" class="m-simpleHeader-back" data-fn="back"><i class="ico ico-back"></i></a>
+        <h1>个人资料</h1>
+    </div>
+    <div class="m-user-info">
+        <div class="m-user-bar m-user-bar-l">
+            <a class="w-bar m-user-bar-avatar"><i class="iconfonts">&#xe62f;</i><span>头像</span><span class="w-bar-ext"><span class="m-user-avatar"><img width="45" height="45" src="{{#if img}}{{img}}{{else}}images/90.jpeg{{/if}}"></span></span></a>
+            <a class="w-bar dark"><i class="iconfonts">&#xe630;</i> <span>ID(唯一不变标识)</span><span class="w-bar-ext">{{id}}</span></a>
+            <a href="javascript:;" class="w-bar" data-show="#changeUserName" data-hide="#userDetail"><i class="iconfonts">&#xe631;</i><span>昵称</span><span class="w-bar-ext"><b class="ico-next"></b></span><span class="m-user-link2 w-bar-ext" id="detailUsername">{{username}}</span></a>
+            <a href="javascript:;" class="w-bar" data-show="#changePhone" data-hide="#userDetail"><i class="iconfonts">&#xe632;</i><span>手机认证</span><span class="w-bar-ext"><b class="ico-next"></b></span><span class="m-user-link2 w-bar-ext" id="detailUserphone">{{mobile}}</span></a>
+            <!--<a href="javascript:;" class="w-bar" data-show="#changePhone" data-hide="#userDetail"><i class="iconfonts">&#xe633;</i><span>邮箱认证</span><span class="m-user-link w-bar-ext" id="detailUserphone">{{mobile}}</span></a>-->
+            <a href="javascript:;" class="w-bar" data-href="?c=address"><i class="iconfonts">&#xe634;</i><span>我的收货地址</span><span class="w-bar-ext"><b class="ico-next"></b></span></a>
+        </div>
+    </div>
+</div>
+<form class="m-user" style="display:none;" id="changePhone">
+    <div class="m-simpleHeader">
+        <a href="javascript:;" class="m-simpleHeader-back" data-show="#userDetail" data-hide="#changePhone">取消</a>
+        <button type="submit" class="m-simpleHeader-ok">保存</button>
+        <h1>修改手机号码</h1>
+    </div>
+    <div class="m-user-mobile">
+        <div class="m-user-bar">
+            <div class="w-inputBar w-bar m-user-bar-border">
+                <div class="w-bar-label">手机号码</div><a href="javascript:;" class="w-bar-input-clear" style="display: none;">×</a>
+                <div class="w-bar-control"><input placeholder="输入手机号" class="w-bar-input" type="tel" name="phone" value="{{mobile}}" maxlength="11"></div>
+            </div>
+            <div class="w-inputBar w-bar m-user-mobile-codeinput">
+                <div class="w-bar-label">验证码</div>
+                <div class="w-bar-control"><input placeholder="输入验证码" class="w-bar-input" type="tel" name="code" value=""><button type="button" class="w-button" id="getCode">获取验证码</button></div>
+            </div>
+            {{#if passwd}}
+            <div class="w-inputBar w-bar m-user-mobile-codeinput">
+                 <div class="w-bar-label">设置密码</div>
+                 <div class="w-bar-control"><input placeholder="密码" class="w-bar-input" type="password" name="password" value=""></div>
+            </div>
+            <div class="w-inputBar w-bar m-user-mobile-codeinput">
+                 <div class="w-bar-label">再输入一次</div>
+                 <div class="w-bar-control"><input placeholder="再次输入" class="w-bar-input" type="password" name="password-sec" value=""></div>
+            </div>
+            <span class='w-span-mark' style='display:none;'>mark</span>
+            {{/if}}
+        </div>
+    </div>
+</form>
+<form class="m-user" style="display:none;" id="changeUserName">
+    <div class="m-simpleHeader">
+        <a href="javascript:;" class="m-simpleHeader-back" data-show="#userDetail" data-hide="#changeUserName">取消</a>
+        <button type="submit" class="m-simpleHeader-ok">保存</button>
+        <h1>修改昵称</h1>
+    </div>
+    <div class="m-user-nickname">
+        <div class="m-user-bar">
+            <div class="w-inputBar w-bar m-user-bar-border"><a href="javascript:;" class="w-bar-input-clear" style="display: none;">×</a>
+                <div class="w-bar-control"><input placeholder="请输入昵称，2-20个字符" class="w-bar-input" type="text" name="username" value="{{username}}"></div>
+            </div>
+        </div>
+    </div>
+</form>

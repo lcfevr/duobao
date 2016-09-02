@@ -1,0 +1,60 @@
+<div class="g-body">
+    <div class="m-list">
+        {{!-- 二级导航 --}}
+        <div class="g-wrap g-body-hd m-list-nav">
+            <div class="m-list-nav-catlog{{#if formData.categoryid}}{{else}} selected{{/if}}">
+                <a href="javascript:;"><span class="txt-red">{{#if formData.categoryid}}
+                {{#list category}}
+                    {{#eq ../formData.categoryid category_id}}{{category_name}}{{/eq}}
+                {{/list}}
+                {{else}}商品分类{{/if}}</span><i class="ico ico-arrow ico-arrow-down ico-arrow-s-gray"></i></a>
+            </div>
+            <div class="m-list-types">
+                    <ul class="m-list-types-list">
+                    <li{{#eq formData.ordername '1'}} class="selected"{{/eq}}>
+                        <a href="javascript:;" data-oname="1">人气</a>
+                    </li>
+                    <li{{#eq formData.ordername '2'}} class="selected"{{/eq}}>
+                        <a href="javascript:;" data-oname="2">最新</a>
+                    </li>
+                    <li{{#eq formData.ordername '4'}} class="selected"{{/eq}}>
+                        <a href="javascript:;" data-oname="4">限购</a>
+                    </li>
+                    <li{{#eq formData.ordername '3'}} class="selected"{{/eq}}>
+                        <a href="javascript:;" data-oname="3">剩余人次</a>
+                    </li>
+                    <li{{#eq formData.order 'desc'}} class="selected down"{{else}}{{#eq formData.order 'asc'}} class="selected up"{{/eq}}{{/eq}}>
+                        <a href="javascript:;">总需人次<i class='ico ico-sort2Arrow'></i></a>
+                    </li>
+                </ul>
+            </div>
+            {{!-- 所有分类列表 --}}
+            <div class="m-list-catlog" style="display: none">
+                <ul class="m-list-catlog-list">
+                    <li{{#if formData.categoryid}}{{else}} class="selected"{{/if}}><a href="javascript:;" data-cid="all"><i class="ico ico-type ico-type-0"></i>全部商品</a></li>
+                    {{#list category}}
+                    <li{{#eq ../formData.categoryid category_id}} class="selected"{{/eq}}><a href="javascript:;" data-cid="{{category_id}}"><i class="ico ico-type ico-type-{{category_id}}"></i>{{category_name}}</a></li>
+                    {{/list}}
+                </ul>
+            </div>
+        </div>
+        {{!-- 正文 --}}
+        <div class="g-wrap g-body-bd">
+            <div class="g-body-bd-mask" style="display:none;"></div>
+            {{!-- 商品列表 --}}
+            <div class="m-list-content" id='listwrap'>
+                <div class="w-loading" style="display: none;">
+                    <img style="display:inline;vertical-align:middle" width="20" height="20" src="http://mimg.127.net/p/yymobile/lib/img/common/loading.gif"> 正在努力加载中……
+                </div>
+                <ul class="w-goodsList w-goodsList-l m-list-goodsList" id="list"></ul>
+                <div class="w-more" id="listMore">
+                {{#if data}}
+                <b class="ico ico-loading"></b> 努力加载中
+                {{else}}
+                暂无商品
+                {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

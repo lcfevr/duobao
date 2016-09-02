@@ -1,0 +1,150 @@
+<div class="g-body">
+    <div class="m-detail" data-gi="{{data.shopid}}">
+        <div class="m-simpleHeader">
+            <a href="javascript:;" class="m-simpleHeader-back" data-fn="back"><i class="ico-back"></i></a>
+            <h1>商品详情</h1>
+        </div>
+        <div class="m-detail-menu">
+            <a id="moreBtn" href="javascript:;" data-fn="cartcoordinate"><i class="ico ico-more"></i><i class="ico ico-dot" data-fn="cartnum"{{^if cartNum}} style="display:none"{{/if}}>{{cartNum}}</i></a>
+            <div class="m-detail-menu-wrap" style="display:none">
+                <i class="ico ico-arrow ico-arrow-transGray"></i>
+                <ul class="m-detail-menu-list">
+                    <li><a class="item" href="javascript:;" data-href="?c=cart"><span class="miniCart"><span class="w-miniCart w-miniCart-gray"><i class="ico ico-miniCart ico-miniCart-gray"></i><b class="w-miniCart-count" data-fn="cartnum"{{^if cartNum}} style="display:none"{{/if}}>{{cartNum}}</b></span></span>清单</a></li>
+                    <li class="last"><a class="item" href="javascript:;" data-href="./"><i class="ico ico-home ico-home-light"></i>首页</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="g-wrap">
+            <div class="g-wrap-hd">
+                <div class="w-slide m-detail-show">
+                    {{!-- <i class="ico ico-label ico-label-l ico-label-ten-l"></i> --}}
+                    <ul class="w-slide-wrap-list">
+                        <li class="w-slide-wrap-list-item">
+                            <a href="javascript:;" class="w-goods-pic" style="background-image:url({{data.thumb}});" data-img="{{data.shopid}}"></a>
+                        </li>
+                    </ul>
+                    <div class="w-slide-controller">
+                        <div class="w-slide-controller-nav"></div>
+                    </div>
+                </div>
+                {{#if data.winUserId}}
+                <div class="m-detail-goods-result">
+                    <div class="w-record">
+                        <i class="ico ico-label ico-label-winner"></i>
+                        <div class="w-record-avatar">
+                            <a href="javascript:;" data-href="?c=profile&amp;id={{data.winUserId}}"><img width="90" height="90" src="{{#if data.winUserImg}}{{data.winUserImg}}{{else}}images/90.jpeg{{/if}}"></a>
+                        </div>
+                        <div class="w-record-detail">
+                            <p class="f-breakword">获奖者：<a href="javascript:;" data-href="?c=profile&amp;id={{data.winUserId}}">{{data.winName}}</a> <span class="txt-green">({{data.winIp}})</span></p>
+                            <p>用户ID：{{data.winUserId}} (唯一不变标识)</p>
+                            <p>本期参与：{{data.winBuyNum}}人次　<a class="m-detail-userCodes-viewWinnerCodesBtn" href="javascript:;" data-showcode="{{data.winBuyCode}}">查看Ta的号码</a></p>
+                            <p>揭晓时间：{{data.endTime}}</p>
+                        </div>
+                    </div>
+                    <p class="m-detail-goods-result-luckyCode">幸运号码：<b>{{data.winLucklyCode}}</b> <a class="resultBtn w-button w-button-simple w-button-simple-white" href="javascript:;" data-href="?c=calculation&amp;id={{data.shopid}}">查看计算详情</a></p>
+                </div>
+                {{else}}
+                <div class="w-goods w-goods-xxl m-detail-goods">
+                    <div class="w-goods-info">
+                        <p class="w-goods-title">{{data.shopTitle}}</p>
+                        <p class="w-goods-period">期号：{{data.periods}}</p>
+                        <div class="w-progressBar">
+                            <p class="wrap">
+                                <span class="bar" style="width:{{#npercent data.remainderNum data.totalNum}}{{val}}{{/npercent}}%;"><i class="color"></i></span>
+                            </p>
+                            <ul class="txt">
+                                <li class="txt-l">
+                                    <p>总需{{data.totalNum}} 人次</p>
+                                </li>
+                                <li class="txt-r">
+                                    <p>剩余<b class="txt-blue">{{data.remainderNum}}</b></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                {{/if}}
+
+                {{!-- <div class="m-detail-userCodes">
+                    <p class="m-detail-userCodes-blank"><a href="javascript:;"><b>请登录</b></a>，查看你的夺宝号码！</p>
+                </div> --}}
+            </div>
+            <div class="g-wrap-bd">
+                <div class="m-detail-more">
+                    <a href="javascript:;" class="w-bar" data-href="?c=intro&amp;id={{data.shopid}}">图文详情 <span class="w-bar-hint">( 建议在wifi下查看 )</span><span class="w-bar-ext"><b class="ico-next"></b></span></a>
+                    <a href="javascript:;" class="w-bar" data-href="?c=previousRecord&amp;id={{data.shopid}}">往期揭晓<span class="w-bar-ext"><b class="ico-next"></b></span></a>
+                    <a href="javascript:;" class="w-bar" data-href="?c=share&amp;id={{data.shopid}}">晒单分享<span class="w-bar-ext"><b class="ico-next"></b></span></a>
+                </div>
+                <div class="m-detail-record">
+                    <div class="w-bar">所有参与记录 <span class="w-bar-hint">( 自{{data.recordStartTime}}开始 )</span></div>
+                    <div class="m-detail-record-wrap">
+                        <ul class="m-detail-record-list" id="detailRecordList"></ul>
+                        <div class="m-detail-record-more">
+                            <div class="w-more" id="detailRecordMore"><b class="ico ico-loading"></b> 努力加载中</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{#if data.remainderNum}}
+        <!-- <div class="m-simpleFooter m-detail-buy">
+            <div class="m-simpleFooter-text" style="text-align:center">
+                <a class="w-button w-button-main" href="javascript:;" data-total="{{data.totalNum}}" data-buy="{{data.shopid}}">立即参与</a><a class="w-button" href="javascript:;" data-addcart="{{data.shopid}}" id="detailShowLog">加入清单</a>
+            </div>
+        </div> -->
+
+
+
+
+        {{#if data.belongs_to}}
+            <div class="m-simpleFooter m-detail-buy">
+                <div class="m-simpleFooter-text" style="text-align:center">
+                    <a class="w-button w-button-main" href="javascript:;" data-total="{{data.totalNum}}" data-freebuy="{{data.shopid}}">立即参与</a>
+                </div>
+            </div>
+        {{else}}
+            <div class="m-simpleFooter m-detail-buy">
+                <div class="m-simpleFooter-text" style="text-align:center">
+                    <a class="w-button w-button-main" href="javascript:;" data-total="{{data.totalNum}}" data-buy="{{data.shopid}}">立即参与</a><a class="w-button" href="javascript:;" data-addcart="{{data.shopid}}" id="detailShowLog">加入清单</a>
+                </div>
+            </div>
+        {{/if}}
+
+        {{/if}}
+
+        {{#if data.next_shopid}}
+            {{#if data.belongs_to}}{{else}}
+                <div class="m-simpleFooter m-detail-buy">
+                    <div class="m-simpleFooter-text" style="text-align:left">
+                        最新一期进行中...<a class="w-button w-button-main" style="float:right;" data-href="?c=detail&id={{data.next_shopid}}" >立即参与</a>
+                    </div>
+                </div>
+            {{/if}}
+        {{/if}}
+    </div>
+</div>
+{{!-- <div class="pro-mask" style="display:none;">
+    <div class="w-msgbox">
+        <div class="w-msgbox-close">×</div>
+        <div class="w-msgbox-bd">
+            <h3 class="w-msgbox-title"></h3>
+            <div class="w-msgbox-codes">
+                <div class="name">
+                    <h3 class="f-txtabb">Apple iPhone6s 64G 颜色随机</h3><span><b class="txt-red">10</b>人次</span></div>
+                <p>以下是你的所有夺宝号码：</p>
+                <ul>
+                    <li>10000740</li>
+                    <li>10003465</li>
+                    <li>10004509</li>
+                    <li>10000778</li>
+                    <li>10003018</li>
+                    <li>10004008</li>
+                    <li>10004195</li>
+                    <li>10002605</li>
+                    <li>10005679</li>
+                    <li>10002082</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div> --}}

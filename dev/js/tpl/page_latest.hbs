@@ -1,0 +1,23 @@
+<div class="g-body">
+    <div class="m-winRecord">
+        <div class="m-simpleHeader">
+            <a href="javascript:;" class="m-simpleHeader-back" data-fn="back"><i class="ico-back"></i></a>
+            <h1>最新揭晓</h1>
+        </div>
+        <div class="g-wrap">
+            <div class="m-winRecord-wrap">
+                <div class="w-loading" style="display: none;">
+                    <img style="display:inline;vertical-align:middle" width="20" height="20" src="http://mimg.127.net/p/yymobile/lib/img/common/loading.gif"> 正在努力加载中……
+                </div>
+                <ul class="m-winRecord-list" id="latestList"></ul>
+                <div class="w-more" id="latestListMore">
+                {{#if item}}
+                <b class="ico ico-loading"></b> 努力加载中
+                {{else}}
+                暂无商品
+                {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

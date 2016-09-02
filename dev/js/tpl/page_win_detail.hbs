@@ -1,0 +1,130 @@
+<div class="m-user" id="winMain">
+    <div class="m-simpleHeader">
+        <a href="javascript:;" class="m-simpleHeader-back" data-fn="back"><i class="ico ico-back"></i></a>
+        <h1>中奖记录</h1>
+    </div>
+    <div class="m-user-winDetail">
+        <div class="status">
+            <div class="m-user-winDetail-hd">商品状态</div>
+            <div class="m-user-progress">
+                <div class="m-user-progress-item over">
+                    <div class="txt">获得商品</div>
+                    <div class="aside"><!-- 2016-01-06 22:24 --></div>
+                    <div class="bdr"></div>
+                    <div class="dot"></div>
+                </div>
+                {{#winInfo status}}
+                <div class="m-user-progress-item over">
+                    <div class="txt">确认收货地址</div>
+                    <div class="aside"><!-- 2016-01-06 22:43 --></div>
+                    <div class="cont"></div>
+                    <div class="bdr"></div>
+                    <div class="bdr bdr-expand"></div>
+                    <div class="dot"></div>
+                </div>
+                {{else}}
+                <div class="m-user-progress-item on bg expand">
+                    <div class="txt txt-impt"><strong>确认收货地址</strong></div>
+                    <div class="cont" id="addrCont">
+                    {{#if consignee}}
+                        <div class="m-user-addrList">
+                            <div class="item default selected">
+                                <div class="name">{{consignee}}</div>
+                                <div class="mobile">{{phone}}</div>
+                                <div class="detail">{{address}} {{street}}</div>
+                            </div>
+                        </div>
+                        <div class="opt">
+                            <button class="w-button w-button-main w-button-s" id="winCheckAddr">修改地址</button>
+                        </div>
+                    {{else}}
+                        {{#if defaultAddress}}
+                            <div class="m-user-addrList">
+                                <div class="item default selected">
+                                    <div class="name">{{defaultAddress.consignee}}</div>
+                                    <div class="mobile">{{defaultAddress.phone}}</div>
+                                    <div class="detail"><span class="m-user-link dftTag">[默认]</span> {{defaultAddress.address}}</div>
+                                </div>
+                            </div>
+                            <div class="opt">
+                                <button class="w-button w-button-main w-button-s" id="winAddrSure" data-addrid="{{defaultAddress.id}}">确认</button>
+                                <button class="w-button w-button-gray w-button-s" id="winCheckAddr">使用其他</button>
+                            </div>
+                        {{else}}
+                            <p>您还没有收货地址哦～</p>
+                            <button class="w-button w-button-main w-button-s" id="winNoAdd">填写地址</button>
+                        {{/if}}
+                    {{/if}}
+                    </div>
+                    <div class="bdr"></div>
+                    <div class="bdr bdr-expand"></div>
+                    <div class="dot"></div>
+                </div>
+                {{/winInfo}}
+                <div class="m-user-progress-item{{#eq status "afterDelivery"}} on wait{{/eq}}{{#eq status "toconfirm"}} over{{/eq}}{{#eq status "completed"}} over{{/eq}}">
+                    <div class="txt">商品派发</div>
+                    {{#eq status "afterDelivery"}}<div class="aside">等待发货</div>{{/eq}}
+                    <div class="bdr"></div>
+                    <div class="dot"></div>
+                </div>
+                <div class="m-user-progress-item{{#eq status "toconfirm"}} on wait{{/eq}}{{#eq status "completed"}} over{{/eq}}">
+                    <div class="txt">确认收货</div>
+                    {{#eq status "toconfirm"}}<div class="aside"><button class="w-button w-button-main w-button-s" id="winReceipt">确认收货</button></div>{{/eq}}
+                    <div class="bdr"></div>
+                    <div class="dot"></div>
+                </div>
+                <div class="m-user-progress-item{{#eq status "completed"}} on wait{{/eq}}">
+                    <div class="txt">完成</div>
+                    <div class="aside"></div>
+                    <div class="bdr"></div>
+                    <div class="dot"></div>
+                </div>
+            </div>
+        </div>
+        <div id="buyUserInfo">
+            {{#if status}}
+            <div class="m-user-winDetail-hd">收货信息</div>
+            <div class="m-user-addrList">
+                <div class="item">
+                    <div class="name">{{consignee}}</div>
+                    <div class="mobile">{{mobile}}</div>
+                    <div class="detail">{{address}} {{street}}</div>
+                </div>
+            </div>
+            {{/if}}
+        </div>
+        <div class="m-user-winDetail-hd">商品信息</div>
+        <ul class="w-goodsList w-goodsList-l m-user-goodsList">
+            <li class="w-goodsList-item">
+                <div class="w-goods w-goods-l w-goods-ing m-user-goods">
+                    <div class="w-goods-pic">
+                        <a href="javascript:;">
+                            <img src="{{goods.img}}" class="">
+                        </a>
+                    </div>
+                    <div class="w-goods-info">
+                        <p class="w-goods-title f-txtabb"><a href="javascript:;">{{goods.name}}</a></p>
+                        <p class="w-goods-price">总需：{{goods.userBuyCount}} 人次</p>
+                        <p class="w-goods-period">期号：{{goods.periods}}</p>
+                        <p class="m-user-goods-code">幸运号码：<span class="txt-impt">{{goods.lucklyNumber}}</span></p>
+                        <p class="m-user-goods-time">本期参与：{{goods.userBuyCount}}人次</p>
+                        <p class="m-user-goods-time">揭晓时间：{{goods.endtime}}</p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="m-user m-user-addrList-choose" id="winAddList" style="display:none;">
+    <div class="m-simpleHeader">
+        <a href="javascript:;" style="display:none;" class="m-simpleHeader-back"><i class="ico ico-back"></i></a>
+        <a href="javascript:;" style="display: block;" class="m-simpleHeader-back" data-hide="#winAddList" data-show="#winMain">取消</a>
+        <a href="javascript:;" class="m-simpleHeader-ok" id="winAddAddrBtn">新增</a>
+        <h1>选择收货地址</h1>
+    </div>
+    <div class="m-user-addrList" id="winAddrList"></div>
+    <div style="display: block; text-align: center; padding: 20px 0px;">
+        <button class="w-button w-button-main w-button-l" style="width: 90%;" id="winAddrBtn" data-hide="#winAddList" data-show="#winMain">确认选择</button>
+    </div>
+</div>
+<form class="m-user" style="display:none;" id="winAddAddr"></form>

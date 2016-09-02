@@ -1,0 +1,37 @@
+<div class="m-simpleHeader"><a href="javascript:;" class="m-simpleHeader-back" data-fn="back"><i class="ico ico-back"></i></a>
+    <h1>清单</h1>
+</div>
+<div class="m-cart" id="cartList">
+{{#if item}}
+{{#list item}}
+    <div class="item" id="cart-item-{{id}}">
+        <div class="pic">
+            <a href="javascript:;"><img src="{{img}}"></a>
+        </div>
+        <div class="text">
+            <h1 class="title"><a href="javascript:;" data-href="?c=detail&amp;id={{id}}">{{{goodsName}}}</a></h1>
+            <div>总需 {{totalNeed}} 人次，剩余 <em class="remain">{{surplus}}</em> 人次</div>
+            <div>参与人次
+                <div class="w-number" data-cartitem="{{id}}"><input type="number" class="w-number-input" value="{{number}}" pattern="[0-9]*" data-val="{{number}}" data-pattern="[0-9]*" data-min="1" data-max="{{limit}}"><a class="w-number-btn w-number-btn-plus" href="javascript:;" data-change="1">+</a><a class="w-number-btn w-number-btn-minus" href="javascript:;" data-change="-1">-</a></div>
+            </div>
+            <a href="javascript:;" class="del" data-cartremove="{{id}}" data-remove="#cart-item-{{id}}"><i class="ico ico-del"></i></a>
+        </div>
+    </div>
+{{/list}}
+{{else}}
+    <div class="empty">您的清单里还没有任何商品，<a href="javascript:;" data-href="./">马上去逛逛~</a></div>
+{{/if}}
+</div>
+<div class="m-simpleFooter">
+    {{#if item}}
+    <div class="m-simpleFooter-text">共参与<span data-fn="cartGoodsNum">{{goodsNum}}</span>件商品，总计：<em class="txt-red"><span data-fn="cartTotal">{{total}}</span>夺宝币</em></div>
+    <div class="m-simpleFooter-ext">
+        <a href="javascript:;" class="w-button w-button-main" data-href="?c=pay">提交</a>
+    </div>
+    {{else}}
+    <div class="m-simpleFooter-text">共参与<span data-fn="cartGoodsNum">0</span>件商品，总计：<em class="txt-red"><span data-fn="cartTotal">0</span>夺宝币</em></div>
+    <div class="m-simpleFooter-ext">
+        <a href="javascript:;" class="w-button w-button-main w-button-disabled">提交</a>
+    </div>
+    {{/if}}
+</div>

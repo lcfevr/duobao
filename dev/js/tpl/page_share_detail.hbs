@@ -1,0 +1,33 @@
+<div class="m-user">
+    <div class="m-simpleHeader">
+        <a href="javascript:;" class="m-simpleHeader-back" data-fn="back"><i class="ico ico-back"></i></a>
+        <h1>晒单详情</h1>
+    </div>
+    <div class="m-user-shareList">
+        <div class="w-shareItem w-shareDetail">
+            <p class="title">{{title}}</p>
+            <p class="author"><a href="javascript:;" data-href="?c=profile&amp;id={{uid}}">{{usename}}</a><span class="time">{{time}}</span></p>
+            <div class="goods">
+                <p>获奖商品：<a href="javascript:;" data-href="?c=detail&amp;id={{goodsId}}">{{goodsname}}</a></p>
+                <p>商品期号：{{periods}}</p>
+                <p>本期参与：<span class="txt-impt">{{buyNum}}</span>人次</p>
+                <p>幸运号码：{{lucklyNum}}</p>
+                <p>揭晓时间：{{endTime}}</p>
+            </div>
+            <div class="all">
+                <div class="txt">{{content}}</div>
+                <div class="pic">
+                    {{#if photolist}}
+                    {{#arrValueList photolist}}
+                        <p><img src="{{val}}"></p>
+                    {{/arrValueList}}
+                    {{else}}
+                        {{#if thumbs}}
+                        <p><img src="{{thumbs}}"></p>
+                        {{/if}}
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

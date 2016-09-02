@@ -1,0 +1,85 @@
+<div class="g-header">
+    {{!--^if isWeiXin--}}
+    <!--<div class="m-header">-->
+        <!--<div class="g-wrap">-->
+            <!--<h1 class="m-header-logo">一元夺宝<a class="m-header-logo-link" href="javascript:;" data-href="./"><i class="ico ico-logo"></i></a></h1>-->
+            <!--<div class="m-header-toolbar">-->
+                <!--{{!-- <a class="m-header-toolbar-btn searchBtn" href="javascript:;"><i class="ico ico-search"></i></a> --}}-->
+                <!--<a class="m-header-toolbar-btn userpageBtn" href="javascript:;" data-href="?c=user"><i class="ico ico-userpage"></i></a>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    {{!-- /if --}}
+    <!-- 导航栏 -->
+    <div class="m-nav">
+        <div class="g-wrap">
+            <!--<ul class="m-nav-list">-->
+                <!--<li{{#if c}}><a href="javascript:;" data-href="./"{{else}} class="selected"><a href="javascript:;"{{/if}}><span>首页<span></a></li>-->
+                <!--<li{{#eq c 'latest'}} class="selected"><a href="javascript:;"{{else}}><a href="javascript:;" data-href="./?c=latest"{{/eq}}><span>最新揭晓<span></a></li>-->
+
+                <!--<li{{#eq c 'list'}} class="selected"><a href="javascript:;"{{else}}><a href="javascript:;" data-href="./?c=list"{{/eq}}><span>全部商品<span></a></li>-->
+                <!--<li{{#eq c 'share'}} class="selected"><a href="javascript:;"{{else}}><a href="javascript:;" data-href="./?c=share"{{/eq}}><span>晒单<span></a></li>-->
+
+                <!--{{#if isWeiXin}}-->
+                <!--<li{{#eq c 'center'}} class="selected"><a href="javascript:;"{{else}}><a href="javascript:;" data-href="?c=user"{{/eq}}><span>我的<span></a></li>-->
+                <!--{{/if}}-->
+            <!--</ul>-->
+
+            <ul class="m-nav-list">
+                <li {{#if c}}>
+                        <a href="javascript:;" data-href="./"{{else}} class="selected"><a href="javascript:;"{{/if}}>
+                    {{#if c}}
+                        <i class="iconfonts">&#xe623;</i>
+                    {{else}}
+                        <i class="iconfonts">&#xe600;</i>
+                    {{/if}}
+                        <span>首页</span>
+                    </a>
+                </li>
+                <li
+                    {{#eq c 'list'}} class="selected"><a href="javascript:;"{{else}}><a href="javascript:;" data-href="./?c=list"{{/eq}}>
+                        {{#eq c 'list'}}
+                            <i class="iconfonts">&#xe622;</i>
+                        {{else}}
+                            <i class="iconfonts">&#xe624;</i>
+                        {{/eq}}
+                        <span>商品</span>
+                    </a>
+                </li>
+                <li
+                    {{#eq c 'share'}} class="selected"><a href="javascript:;"{{else}}><a href="javascript:;" data-href="./?c=share"{{/eq}}>
+                        {{#eq c 'share'}}
+                            <i class="iconfonts">&#xe603;</i>
+                        {{else}}
+                            <i class="iconfonts">&#xe625;</i>
+                        {{/eq}}
+                        <span>晒单</span>
+                    </a>
+                </li>
+                <li data-cartCar="cartCar"
+                    {{#eq c 'cart'}} class="selected"><a href="javascript:;"{{else}}><a href="javascript:;" data-href="./?c=cart"{{/eq}}>
+                        {{#eq c 'cart'}}
+                            <i class="iconfonts">&#xe604;</i>
+                        {{else}}
+                            <i class="iconfonts">&#xe626;</i>
+                        {{/eq}}
+                        <span>购物车</span>
+                    {{#if cart}}<b class="w-miniCart-count" data-fn="cartnum"{{#if cartNum}}{{else}} style="display:none"{{/if}}>{{cartNum}}</b>{{/if}}
+                    </a>
+                </li>
+                {{#if isWeiXin}}
+                <li
+                    {{#eq c 'user'}} class="selected"><a href="javascript:;"{{else}}><a href="javascript:;" data-href="./?c=user"{{/eq}}>
+                        {{#eq c 'user'}}
+                            <i class="iconfonts">&#xe605;</i>
+                        {{else}}
+                            <i class="iconfonts">&#xe627;</i>
+                        {{/eq}}
+                        <span>我</span>
+                    </a>
+                </li>
+                {{/if}}
+            </ul>
+        </div>
+    </div>
+</div>

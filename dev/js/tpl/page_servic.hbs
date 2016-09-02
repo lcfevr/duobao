@@ -1,0 +1,15 @@
+<div class="m-user" id="userDetail">
+    <div class="m-simpleHeader">
+        <a href="javascript:;" class="m-simpleHeader-back" data-fn="back"><i class="ico ico-back"></i></a>
+        <h1>服务中心</h1>
+    </div>
+    <p class="m-serviceCall"><a href="javascript:;" class="m-call"><i class="iconfonts lineico19"></i><span>联系客服</span></a><span >系统公告</span></p>
+    <div class="m-user-info">
+        <div class="m-user-bar m-user-bar-l page-service">
+            {{#list item}}
+            <a href="javascript:;" class="w-bar dark showArticle"><i class="iconfonts {{icon}}"></i><span>{{title}}</span><span class="w-bar-ext"><b class="ico-next"></b></span></a>
+            <div class="m-article " data-content="{{content}}"></div>
+            {{/list}}
+        </div>
+    </div>
+</div>
